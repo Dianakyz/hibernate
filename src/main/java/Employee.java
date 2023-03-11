@@ -17,6 +17,7 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private int age;
+    @JoinColumn(name = "city_id")
     @ManyToOne(optional = false)
     private City city;
 
