@@ -1,8 +1,21 @@
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
+@Entity
+@Table(name = "city")
 public class City {
+    @Id
+    @GeneratedValue
     private int city_id;
+    @Column(name = "name_city")
     private String name_city;
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Employee> employees = new ArrayList<>();
+
+    public City() {
+    }
 
     public City(int city_id, String name_city) {
         this.city_id = city_id;
